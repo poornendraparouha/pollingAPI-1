@@ -16,7 +16,8 @@ app.use('/',require('../routes/index'));
 
 module.exports.startServer = async function startServer(){
     try { await mongoose.connect(
-        process.env.MONGODB_URL,
+        process.env.MONGODB_URI,
+        // "mongodb://127.0.0.1:27017/pollingApi",
         {
             useNewUrlParser:true,
             useUnifiedTopology:true
