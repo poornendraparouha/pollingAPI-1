@@ -2,7 +2,7 @@ const Option=require('../models/option');
 const Question= require('../models/question');
 module.exports.create=async function(req,res){
     // in this we will create the options to the id given question 
-    console.log(req.body,req.params.id)
+    // console.log(req.body,req.params.id)
     const opt=await Option.create({
         option:req.body.option,
         question:req.params.id,
@@ -16,23 +16,23 @@ module.exports.create=async function(req,res){
     if(ques){
     ques.options.push(updateOpt)
     ques.save()
-    console.log(ques)
+    // console.log(ques)
     res.send(ques) 
 
     }
     else{
-        res.send('question does not exists')
+        res.send('Question does not exists')
     }
 }
 
 module.exports.add_vote=async function(req,res){
     // in this votes will be added to the particular option of the question
-    console.log(req.params.id)
+    // console.log(req.params.id)
     // this the increment query in which the vote is incremented by one 
     const opt=await Option.findByIdAndUpdate(req.params.id,{ $inc: { vote: 1 }})
     if(opt){
         await opt.save();
-        console.log(opt);
+        // console.log(opt);
         res.send(opt)
     }
     // handling the bad requests
@@ -43,7 +43,7 @@ module.exports.add_vote=async function(req,res){
 
 module.exports.delete=async function(req,res){
     // delete the id option 
-    console.log('id',req.params.id);
+    // console.log('id',req.params.id);
     const opt=await Option.findById(req.params.id);
     if(opt){
         const quesId=opt.question;
@@ -52,11 +52,11 @@ module.exports.delete=async function(req,res){
         // now absolutely deleting that option
         await Option.findByIdAndDelete(req.params.id)
 
-        console.log(ques);
-        res.send('option deleted')
+        // console.log(ques);
+        res.send('Option deleted')
     }
     // handling the bad request
     else{
-        res.send('id not exists')
+        res.send('Option not exists')
     }
 }
