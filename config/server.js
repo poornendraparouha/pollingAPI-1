@@ -1,5 +1,5 @@
 const express = require('express')
-const port = 7001;
+const port = 7002;
 const app = express();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
@@ -16,11 +16,10 @@ app.use('/',require('../routes/index'));
 
 module.exports.startServer = async function startServer(){
     try { await mongoose.connect(
-        process.env.MONGODB_URI,
-        // "mongodb://127.0.0.1:27017/pollingApi",
+        process.env.MONGODB_URL,
         {
             useNewUrlParser:true,
-            useUnifiedTopology:true
+            useUnifiedTopology:true,
         }
     );
     app.listen(port, function (err){

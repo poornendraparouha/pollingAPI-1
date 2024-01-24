@@ -1,20 +1,9 @@
 const Question=require('../models/question')
 const Option=require('../models/option')
 
-// module.exports.create = async function(req,res){
-// //  in this the question are created
-//     console.log(req.url);
-//     console.log(req.body);
-//     await Question.create(req.body, function(err,ques){
-//             if(err){console.log("error in creating the question schema",err);}
-//         console.log(ques);
-//         res.send(ques);
-// })
-// }
+// creating controller for question
 module.exports.create = async function(req, res) {
     try {
-        console.log(req.url);
-        console.log(req.body);
         const ques = await Question.create(req.body);
         
         console.log(ques);
@@ -38,8 +27,6 @@ module.exports.showDetails=async function(req,res){
         else{
             res.send("id does not exits");
         }
-
-    
 
     // in this the details about the question is displayed
 }
