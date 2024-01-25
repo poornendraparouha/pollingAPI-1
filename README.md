@@ -22,3 +22,6 @@
 - /option/:id/delete (To delete an option)
 - /option/:id/add_vote (To increment the count of votes)
 - /question/:id (To view a question and it’s options)
+
+  <h3> Deployment Link</h3>
+  https://polling-system-api-bykt.onrender.com
